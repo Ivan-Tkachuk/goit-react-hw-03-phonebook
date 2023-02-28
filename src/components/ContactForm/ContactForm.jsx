@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Form,
   FormField,
@@ -56,6 +57,16 @@ export const ContactForm = ({ onSubmit }) => {
   );
 };
 
+ContactForm.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+  onSubmit: PropTypes.func,
+}
 
 
 

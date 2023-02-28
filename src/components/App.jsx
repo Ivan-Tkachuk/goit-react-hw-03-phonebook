@@ -5,7 +5,7 @@ import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 
 import { Container } from './App.styled';
-// import initialContacts from './contacts';
+import initialContacts from './contacts';
 
 class App extends React.Component {
   state = {
@@ -15,13 +15,17 @@ class App extends React.Component {
 
   componentDidMount() {
     const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
 
-    if (parsedContacts) {
+    if (contacts !== null) {
+      const parsedContacts = JSON.parse(contacts);
       this.setState({
         contacts: parsedContacts
       });
+      return;
     }
+    this.setState({
+      contacts: initialContacts
+    })
   }
 
   componentDidUpdate(prevProps, prevState) {
